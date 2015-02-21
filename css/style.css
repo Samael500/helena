@@ -1237,6 +1237,7 @@
 		color: #fff;
 		padding: 12em 0 20em 0;
 		text-align: center;
+		height: 100vh;
 		min-height: 100vh;
 		max-height: 100vh;
 	}
