@@ -1240,6 +1240,32 @@
 		min-height: 100vh;
 	}
 
+		#banner .copyright {
+			font-size: 0.9em;
+			line-height: 1em;
+			margin: 45vh 0 0 0;
+			padding: 0;
+			text-align: center;
+		}
+
+			#banner .copyright a {
+				color: inherit;
+			}
+
+			#banner .copyright li {
+				border-left: solid 1px #dddddd;
+				display: inline-block;
+				list-style: none;
+				margin-left: 1em;
+				padding-left: 1em;
+			}
+
+				#banner .copyright li:first-child {
+					border-left: 0;
+					margin-left: 0;
+					padding-left: 0;
+				}
+
 		#banner :last-child {
 			margin-bottom: 0;
 		}
