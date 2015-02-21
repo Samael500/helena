@@ -1054,6 +1054,14 @@
 						border: 0;
 					}
 
+						#header:not(.alt) nav > ul > li a:hover {
+							box-shadow: inset 0 0 0 2px #e5e5e5;
+						}
+
+						#header:not(.alt) nav > ul > li a.active {
+							box-shadow: inset 0 0 0 2px #e5e5e5;
+						}
+
 						#header nav > ul > li a:not(.button).icon:before {
 							color: #999;
 							margin-right: 0.5em;
