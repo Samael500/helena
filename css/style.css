@@ -1245,8 +1245,11 @@
 		#banner .copyright {
 			font-size: 0.9em;
 			line-height: 1em;
-			margin: 45vh 0 0 0;
+			margin: 2em 0 0 0;
 			padding: 0;
+			position: absolute;
+			width: 100vw;
+			bottom: 2em;
 			text-align: center;
 		}
 
