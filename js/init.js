@@ -43,7 +43,7 @@
 					navButton: {
 						breakpoints: 'narrower',
 						height: '4em',
-						html: '<span class="toggle" data-action="toggleLayer" data-args="navPanel"></span>',
+						html: '<span class="toggle" data-action="toggleLayer" data-args="navPanel" onclick="$.fancybox.close();"></span>',
 						position: 'top-left',
 						side: 'top',
 						width: '6em'
