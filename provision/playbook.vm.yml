@@ -7,6 +7,7 @@
     # for all tasks
     root_dir: /home/max/helena
     project_name: helena
+    venv_path: venv
     locale: ru_RU
     encoding: UTF-8
   tasks:
