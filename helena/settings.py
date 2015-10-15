@@ -12,9 +12,13 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from os.path import join
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+if __name__ in ('settings', 'helena.settings'):
+    import sys
+    sys.path.insert(0, join(BASE_DIR, 'helena'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -23,20 +27,27 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'k8bwc-=ar%=4=k+8%+tu@3gyz7_crlq(asj6$dxecgncl4+n+9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+TEMPLATE_DEBUG = False
+TESTING = 'test' in sys.argv
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ('10.1.1.123', )
 
 # Application definition
 
 INSTALLED_APPS = (
+    'grappelli',
+    # default apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # additional apps
+    'compressor',
+    # helena apps
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -76,8 +87,11 @@ WSGI_APPLICATION = 'helena.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'helena',
+        'USER': 'helena',
+        'PASSWORD': 'eXKce0VV',
+        'HOST': '127.0.0.1',
     }
 }
 
@@ -85,18 +99,50 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
+LANGUAGE_CODE = 'ru'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = 'markup/static/'
+
+MEDIA_URL = '/static/media/'
+MEDIA_ROOT = 'markup/static/media/'
+
+# compressor settings
+COMPRESS_ROOT = join(BASE_DIR, STATIC_ROOT)
+# COMPRESS_PRECOMPILERS = (
+#     ('text/coffeescript', 'coffee --compile --stdio'),
+#     ('text/x-scss', 'django_libsass.SassCompiler'), )
+COMPRESS_ENABLED = True
+COMPRESS_OFFLINE = True
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder', )
+
+# rainbow tests
+TEST_RUNNER = 'rainbowtests.test.runner.RainbowDiscoverRunner'
+
+# error reports
+SERVER_EMAIL = 'notification@helena.com'
+ADMINS = (('Maks', 'samael500@gmail.com'), )
+
+
+try:
+    from settings_local import *  # noqa
+except ImportError:
+    pass
+
+try:
+    if 'TRAVIS' in os.environ:
+        from settings_travis import *  # noqa
+except ImportError:
+    pass
