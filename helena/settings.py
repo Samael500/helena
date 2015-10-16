@@ -115,6 +115,11 @@ STATIC_ROOT = 'markup/static/'
 MEDIA_URL = '/static/media/'
 MEDIA_ROOT = 'markup/static/media/'
 
+# template folder root
+TEMPLATE_DIRS = (
+    join(BASE_DIR, 'helena', 'templates'),
+)
+
 # compressor settings
 COMPRESS_ROOT = join(BASE_DIR, STATIC_ROOT)
 # COMPRESS_PRECOMPILERS = (
