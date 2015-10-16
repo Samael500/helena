@@ -1,0 +1,89 @@
+{% load compress %}{% spaceless %}
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>Photographer Elena Skorokhod</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+
+        {% compress 'js' %}
+            {# theme style js #}
+            <script src="{{ STATIC_URL }}js/jquery.min.js"></script>
+            <script src="{{ STATIC_URL }}js/jquery.dropotron.min.js"></script>
+            <script src="{{ STATIC_URL }}js/jquery.scrollgress.min.js"></script>
+            <script src="{{ STATIC_URL }}js/skel.min.js"></script>
+            <script src="{{ STATIC_URL }}js/skel-layers.min.js"></script>
+            <script src="{{ STATIC_URL }}js/init.js"></script>
+            {# fancybox js #}
+            <script src="{{ STATIC_URL }}fancybox/jquery.fancybox.js"></script>
+            <script src="{{ STATIC_URL }}fancybox/jquery.fancybox.pack.js"></script>
+        {% endcompress %}
+
+        {% compress 'css' %}
+            <link rel="stylesheet" href="{{ STATIC_URL }}fancybox/jquery.fancybox.css" />
+        {% endcompress %}
+
+        <noscript>
+            {% compress 'css' %}
+                <link rel="stylesheet" href="{{ STATIC_URL }}css/skel.css" />
+                <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" />
+                <link rel="stylesheet" href="{{ STATIC_URL }}css/style-wide.css" />
+            {% endcompress %}
+        </noscript>
+
+    </head>
+    <body class="landing">
+
+        {% block menu %}
+            <header id="header" class="alt">
+                <h1>Фотограф <a href="index.html">Елена Скороход</a></h1>
+                <nav id="nav">
+                    <ul>
+                        <li><a href="genres.html">Жанры</a></li>
+                        <li><a href="gallery.html">Галерея</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                </nav>
+            </header>
+        {% endblock menu %}
+
+        {% block full_content %}
+        {% endblock full_content%}
+
+    {% block ya_metrika %}
+        {# Yandex.Metrika counter #}
+        <script type="text/javascript">
+            (function (d, w, c) {
+                (w[c] = w[c] || []).push(function() {
+                    try {
+                        w.yaCounter32193749 = new Ya.Metrika({
+                            id:32193749,
+                            clickmap:true,
+                            trackLinks:true,
+                            accurateTrackBounce:true,
+                            webvisor:true,
+                            params:{'ip': '{{ request.META.HTTP_X_REAL_IP }}'}
+                        });
+                    } catch(e) { }
+                });
+
+                var n = d.getElementsByTagName("script")[0],
+                    s = d.createElement("script"),
+                    f = function () { n.parentNode.insertBefore(s, n); };
+                s.type = "text/javascript";
+                s.async = true;
+                s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+                if (w.opera == "[object Opera]") {
+                    d.addEventListener("DOMContentLoaded", f, false);
+                } else { f(); }
+            })(document, window, "yandex_metrika_callbacks");
+        </script>
+        <noscript><div><img src="https://mc.yandex.ru/watch/32193749" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    {% endblock ya_metrika %}
+
+    </body>
+</html>
+{% endspaceless %}
