@@ -9,6 +9,12 @@
   shell: >
     cd {{ root_dir }} && {{ venv_path }}/bin/pip install --no-index -f wheels/ -r requirements.txt
   sudo: no
+- name: Copy settings local
+  shell: cp settings_local.py.example settings_local.py
+  sudo: no
+  args:
+    chdir: '{{ root_dir }}/{{ project_name }}'
+    creates: '{{ root_dir }}/{{ project_name }}/settings_local.py'
 - name: Run django commands
   django_manage: >
     command="{{ item }}" app_path={{ root_dir }} virtualenv={{ root_dir }}/{{ venv_path }}

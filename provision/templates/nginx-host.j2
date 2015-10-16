@@ -7,16 +7,14 @@ server {
 
     location /robots.txt {
         echo "User-Agent: *";
-        echo "Disallow: /";
+        echo "Allow: /";
+    }
+
+    location /static {
+        root {{ root_dir }}/markup;
     }
 
     location / {
-        try_files $uri $uri/ @django;
-        root {{ root_dir }}/markup;
-        sendfile  off;
-    }
-
-    location @django {
         proxy_pass          http://localhost:8050;
         proxy_set_header    Host $host;
         proxy_set_header    X-Real-IP $remote_addr;
