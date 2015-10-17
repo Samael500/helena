@@ -66,7 +66,9 @@ ROOT_URLCONF = 'helena.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            join(BASE_DIR, 'helena', 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -114,16 +116,6 @@ STATIC_ROOT = 'markup/static/'
 
 MEDIA_URL = '/static/media/'
 MEDIA_ROOT = 'markup/static/media/'
-
-# template folder root
-# TEMPLATE_DIRS = (
-#     join(BASE_DIR, 'helena', 'templates'),
-# )
-
-# TEMPLATE_LOADERS = (
-#     'django.template.loaders.filesystem.Loader',
-#     'django.template.loaders.app_directories.Loader',
-# )
 
 # compressor settings
 COMPRESS_ROOT = join(BASE_DIR, STATIC_ROOT)
