@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block full_content %}
+    <!-- Banner -->
+    <section id="banner">
+        <h2>Елена Скороход</h2>
+        <p>Сохраните лучшие моменты...</p>
+        <ul class="icons">
+        {% for link in SOCIAL_LINKS %}
+            <li><a href="{{ link.0 }}" class="icon {{ link.1 }}"><span class="label">{{ link.2 }}</span></a></li>
+        {% endfor %}
+        </ul>
+
+        <ul class="copyright">
+            <li>2014 &mdash; {% now 'Y' %} &copy; Elena Skorokhod. All rights reserved.</li>
+        </ul>
+    </section>
+
+{% endblock full_content%}

@@ -1,0 +1,23 @@
+server {
+
+    listen {{ http_port }};
+    server_name {{ http_host }};
+
+    client_max_body_size 50m;
+
+    location /robots.txt {
+        echo "User-Agent: *";
+        echo "Allow: /";
+    }
+
+    location /static {
+        root {{ root_dir }}/markup;
+    }
+
+    location / {
+        proxy_pass          http://localhost:8050;
+        proxy_set_header    Host $host;
+        proxy_set_header    X-Real-IP $remote_addr;
+    }
+
+}
