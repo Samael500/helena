@@ -8,7 +8,7 @@
         <meta name="description" content="" />
         <meta name="keywords" content="" />
 
-        {% compress 'js' %}
+        {% compress js %}
             {# theme style js #}
             <script src="{{ STATIC_URL }}js/jquery.min.js"></script>
             <script src="{{ STATIC_URL }}js/jquery.dropotron.min.js"></script>
@@ -21,12 +21,12 @@
             <script src="{{ STATIC_URL }}fancybox/jquery.fancybox.pack.js"></script>
         {% endcompress %}
 
-        {% compress 'css' %}
+        {% compress css %}
             <link rel="stylesheet" href="{{ STATIC_URL }}fancybox/jquery.fancybox.css" />
         {% endcompress %}
 
         <noscript>
-            {% compress 'css' %}
+            {% compress css %}
                 <link rel="stylesheet" href="{{ STATIC_URL }}css/skel.css" />
                 <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" />
                 <link rel="stylesheet" href="{{ STATIC_URL }}css/style-wide.css" />

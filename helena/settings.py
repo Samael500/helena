@@ -47,7 +47,7 @@ INSTALLED_APPS = (
     # additional apps
     'compressor',
     # helena apps
-
+    'content',
 )
 
 MIDDLEWARE_CLASSES = (
