@@ -6,15 +6,13 @@
         <h2>Елена Скороход</h2>
         <p>Сохраните лучшие моменты...</p>
         <ul class="icons">
-            <li><a href="https://twitter.com/Helen_Techer" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-            <li><a href="https://vk.com/skorokhodelena" class="icon fa-vk"><span class="label">Vkontakte</span></a></li>
-            <li><a href="https://instagram.com/elenaskorokhod/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-            <li><a href="http://helen-techer.tumblr.com" class="icon fa-tumblr-square"><span class="label">Tumblr</span></a></li>
-            <li><a href="https://www.youtube.com/user/HelenTecher" class="icon fa-youtube-square"><span class="label">Youtube</span></a></li>
+        {% for link in SOCIAL_LINKS %}
+            <li><a href="{{ link.0 }}" class="icon {{ link.1 }}"><span class="label">{{ link.2 }}</span></a></li>
+        {% endfor %}
         </ul>
 
         <ul class="copyright">
-            <li>&copy; Elena Skorokhod. All rights reserved.</li>
+            <li>2014 &mdash; {% now 'Y' %} &copy; Elena Skorokhod. All rights reserved.</li>
         </ul>
     </section>
 

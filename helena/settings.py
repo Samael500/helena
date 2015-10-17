@@ -76,6 +76,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # custom
+                'content.context_processors.custom_variables_processor',
             ],
         },
     },
@@ -137,6 +139,14 @@ TEST_RUNNER = 'rainbowtests.test.runner.RainbowDiscoverRunner'
 SERVER_EMAIL = 'notification@helena.com'
 ADMINS = (('Maks', 'samael500@gmail.com'), )
 
+# social links
+SOCIAL_LINKS = (
+    ('https://twitter.com/Helen_Techer', 'fa-twitter', 'Twitter'),
+    ('https://vk.com/skorokhodelena', 'fa-vk', 'Vkontakte'),
+    ('https://instagram.com/elenaskorokhod/', 'fa-instagram', 'Instagram'),
+    ('http://helen-techer.tumblr.com', 'fa-tumblr-square', 'Tumblr'),
+    ('https://www.youtube.com/user/HelenTecher', 'fa-youtube-square', 'Youtube'),
+)
 
 try:
     from settings_local import *  # noqa
