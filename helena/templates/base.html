@@ -3,7 +3,7 @@
 
 <html>
     <head>
-        <title>Photographer Elena Skorokhod</title>
+        <title>{% block title %}Photographer Elena Skorokhod{% endblock %}</title>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -41,16 +41,34 @@
                 <h1>Фотограф <a href="index.html">Елена Скороход</a></h1>
                 <nav id="nav">
                     <ul>
-                        <li><a href="genres.html">Жанры</a></li>
-                        <li><a href="gallery.html">Галерея</a></li>
-                        <li><a href="contacts.html">Контакты</a></li>
+                        <li><a href="{% url 'genres' %}">Жанры</a></li>
+                        {# <li><a href="gallery.html">Галерея</a></li> #}
+                        {# <li><a href="contacts.html">Контакты</a></li> #}
                     </ul>
                 </nav>
             </header>
         {% endblock menu %}
 
-        {% block full_content %}
-        {% endblock full_content%}
+{% block full_content %}
+
+        {% block content %}
+        {% endblock content %}
+
+        {% block footer %}
+            <footer id="footer">
+                <ul class="icons">
+                    {% for link in SOCIAL_LINKS %}
+                        <li><a href="{{ link.0 }}" class="icon {{ link.1 }}"><span class="label">{{ link.2 }}</span></a></li>
+                    {% endfor %}
+                </ul>
+
+                <ul class="copyright">
+                    <li>2014 &mdash; {% now 'Y' %} &copy; Elena Skorokhod. All rights reserved.</li>
+                </ul>
+            </footer>
+        {% endblock footer %}
+
+{% endblock full_content%}
 
     {% block ya_metrika %}
         {# Yandex.Metrika counter #}

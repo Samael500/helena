@@ -7,3 +7,10 @@ class IndexView(TemplateView):
 
     template_name = 'index.html'
 
+
+class GenersView(TemplateView):
+
+    """ list with geners """
+
+    template_name = 'geners.html'
+
