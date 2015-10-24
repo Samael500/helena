@@ -21,6 +21,8 @@
             <script src="{% static 'fancybox/jquery.fancybox.pack.js' %}"></script>
         {% endcompress %}
 
+        {% block extra_scripts %}{% endblock %}
+
         {% compress css %}
             <link rel="stylesheet" href="{% static 'fancybox/jquery.fancybox.css' %}" />
         {% endcompress %}
@@ -34,39 +36,40 @@
         </noscript>
 
     </head>
-    <body class="landing">
+    {% block bodytag%}<body>{% endblock %}
 
-        {% block menu %}
-            <header id="header" class="alt">
-                <h1>Фотограф <a href="index.html">Елена Скороход</a></h1>
-                <nav id="nav">
-                    <ul>
-                        <li><a href="{% url 'genres' %}">Жанры</a></li>
-                        {# <li><a href="gallery.html">Галерея</a></li> #}
-                        {# <li><a href="contacts.html">Контакты</a></li> #}
-                    </ul>
-                </nav>
-            </header>
-        {% endblock menu %}
+{% block menu %}
+    <header id="header" class="{% if dark %}skel-layers-fixed{% else %}alt{% endif %}">
+        <h1>Фотограф <a href="/">Елена Скороход</a></h1>
+        <nav id="nav">
+            <ul>
+                {% if dark %}<li><a href="{% url 'index' %}">Главная</a></li>{% endif %}
+                <li><a href="{% url 'genres' %}" {% if page == 'genres' %}class='active'{% endif %}>Жанры</a></li>
+                {# <li><a href="gallery.html">Галерея</a></li> #}
+                {# <!-- <li><a href="contacts.html">Контакты</a></li> --> #}
+            </ul>
+        </nav>
+    </header>
+{% endblock menu %}
 
 {% block full_content %}
 
         {% block content %}
         {% endblock content %}
 
-        {% block footer %}
-            <footer id="footer">
+        <footer id="footer">
+            {% block footer %}
                 <ul class="icons">
                     {% for link in SOCIAL_LINKS %}
-                        <li><a href="{{ link.0 }}" class="icon {{ link.1 }}"><span class="label">{{ link.2 }}</span></a></li>
+                        <li><a href="{{ link.0 }}" class="icon {{ link.1 }}" title="{{ link.2 }}"><span class="label">{{ link.2 }}</span></a></li>
                     {% endfor %}
                 </ul>
 
                 <ul class="copyright">
                     <li>2014 &mdash; {% now 'Y' %} &copy; Elena Skorokhod. All rights reserved.</li>
                 </ul>
-            </footer>
-        {% endblock footer %}
+            {% endblock footer %}
+        </footer>
 
 {% endblock full_content%}
 
