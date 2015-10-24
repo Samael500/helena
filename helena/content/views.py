@@ -1,4 +1,5 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
+from content.models import Genres
 
 
 class IndexView(TemplateView):
@@ -8,9 +9,10 @@ class IndexView(TemplateView):
     template_name = 'index.html'
 
 
-class GenersView(TemplateView):
+class GenresView(ListView):
 
-    """ list with geners """
+    """ list with genres """
 
-    template_name = 'geners.html'
+    model = Genres
+    template_name = 'genres.html'
 

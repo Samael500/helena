@@ -2,76 +2,47 @@
 
 {% block title %}Жанры / {{ block.super }}{% endblock %}
 
-{% comment %}
-        <!-- Header -->
-            <header id="header" class="skel-layers-fixed">
-                <h1>Фотограф <a href="index.html">Елена Скороход</a></h1>
-                <nav id="nav">
-                    <ul>
-                        <li><a href="index.html">Главная</a></li>
-                        <li><a href="genres.html" class="active">Жанры</a></li>
-                        <li><a href="gallery.html">Галерея</a></li>
-                        <!-- <li><a href="contacts.html">Контакты</a></li> -->
-                    </ul>
-                </nav>
-            </header>
-{% endcomment %}
+{% block extra_scripts %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".fancybox").fancybox({
+            prevEffect : 'fade',
+            nextEffect : 'fade',
+            helpers : {title: {type: 'inside' }, }
+        });
+    });
+</script>
+{% endblock %}
+
+
+{% block menu %}
+    {% with dark=True page='genres' %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}
+
 
 {% block content %}
     <section id="main" class="container">
         <header>
             <h2>Жанры</h2>
-            <p>Фотография как направление искусства очень многогранна.</p>
+            <p>Фотография как направление искусства очень многогранна</p>
         </header>
         <div class="box">
 
-            <div class="row">
-                <div class="9u">
-                    <h3>Портрет</h3>
-                    <p>Изображение какого-либо человека либо группы людей, существующих или существовавших в реальной действительности.</p>
+            {% for row in object_list %}
+                <div class="row">
+                    <div class="9u">
+                        <h3>{{ row.title }}</h3>
+                        <p>{{ row.description }}</p>
+                    </div>
+                    <div class="3u"><span class="image fit">
+                        <a class="fancybox" rel="fancybox" href="{{ row.image.url }}" title="{{ row.title }}">
+                            <img src="{{ row.image.url }}" alt="{{ row.title }}" />
+                        </a>
+                    </span></div>
                 </div>
-                <div class="3u"><span class="image fit">
-                    <a class="fancybox" rel="fancybox" href="images/genres/portrait.jpg" title="Портрет">
-                        <img src="images/genres/portrait.jpg" alt="Портрет" />
-                    </a>
-                </span></div>
-            </div>
-
-            <div class="row">
-                <div class="9u">
-                    <h3>Свадебная фотография</h3>
-                    <p>Свадебная фотосъёмка может быть ориентирована на постановочные кадры или на репортажные. При репортажной съёмке получается меньше художественно-выразительных снимков, хотя фотографии получаются более реалистичными - «жизненными». При постановочной съёмке фотографии выглядят более выразительными - в этом случае фотограф сам режиссирует снимок в соответствии со своим замыслом, ставя молодожёнов в нужные позы и стараясь получить необходимую эмоциональную, образную наполненность снимка.</p>
-                </div>
-                <div class="3u"><span class="image fit">
-                    <a class="fancybox" rel="fancybox" href="images/genres/wedding.jpg" title="Свадебная фотография">
-                        <img src="images/genres/wedding.jpg" alt="Свадебная фотография" />
-                    </a>
-                </span></div>
-            </div>
-
-            <div class="row">
-                <div class="9u">
-                    <h3>Постановочная фотография</h3>
-                    <p>Постановочная фотография, прежде всего, указывает на некий определенный идейный замысел. Именно художественная идея является основой любой постановочной фотографии и требует конкретной ее реализации. В силу этого содержание постановки может быть самым разнообразным и не сводится только к одному какому-либо жанру.</p>
-                </div>
-                <div class="3u"><span class="image fit">
-                    <a class="fancybox" rel="fancybox" href="images/genres/post.jpg" title="Постановочная фотография">
-                        <img src="images/genres/post.jpg" alt="Постановочная фотография" />
-                    </a>
-                </span></div>
-            </div>
-
-            <div class="row">
-                <div class="9u">
-                    <h3>Lookbook</h3>
-                    <p>Серия фотографий, представляющих оригинальные образы, созданные из дизайнерской одежды и аксессуаров одного или нескольких брендов. Образы демонстрируются преимущественно на моделях, однако иногда они могут быть представлены только одеждой и аксессуарами. Лукбук должен быть выполнен в едином стиле. Термин также используется в качестве синонима к понятию «портфолио».</p>
-                </div>
-                <div class="3u"><span class="image fit">
-                    <a class="fancybox" rel="fancybox" href="images/genres/look.jpg" title="Lookbook">
-                        <img src="images/genres/look.jpg" alt="Lookbook" />
-                    </a>
-                </span></div>
-            </div>
+            {% endfor %}
 
         </div>
     </section>
