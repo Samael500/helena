@@ -16,3 +16,9 @@ class GenresView(ListView):
     model = Genres
     template_name = 'genres.html'
 
+
+class GalleryView(TemplateView):
+
+    """ simple template for gallery page """
+
+    template_name = 'gallery.html'

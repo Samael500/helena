@@ -45,7 +45,7 @@
             <ul>
                 {% if dark %}<li><a href="{% url 'index' %}">Главная</a></li>{% endif %}
                 <li><a href="{% url 'genres' %}" {% if page == 'genres' %}class='active'{% endif %}>Жанры</a></li>
-                {# <li><a href="gallery.html">Галерея</a></li> #}
+                <li><a href="{% url 'gallery' %}" {% if page == 'gallery' %}class='active'{% endif %}>Галерея</a></li>
                 {# <!-- <li><a href="contacts.html">Контакты</a></li> --> #}
             </ul>
         </nav>
