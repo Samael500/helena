@@ -43,9 +43,9 @@
         <h1>Фотограф <a href="/">Елена Скороход</a></h1>
         <nav id="nav">
             <ul>
-                {% if dark %}<li><a href="{% url 'index' %}">Главная</a></li>{% endif %}
-                <li><a href="{% url 'genres' %}" {% if page == 'genres' %}class='active'{% endif %}>Жанры</a></li>
-                <li><a href="{% url 'gallery' %}" {% if page == 'gallery' %}class='active'{% endif %}>Галерея</a></li>
+                {% if dark %}<li><a href="{% url 'content:index' %}">Главная</a></li>{% endif %}
+                <li><a href="{% url 'content:genres' %}" {% if page == 'genres' %}class='active'{% endif %}>Жанры</a></li>
+                <li><a href="{% url 'content:gallery' %}" {% if page == 'gallery' %}class='active'{% endif %}>Галерея</a></li>
                 {# <!-- <li><a href="contacts.html">Контакты</a></li> --> #}
             </ul>
         </nav>
