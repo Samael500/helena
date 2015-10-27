@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Жанры / {{ block.super }}{% endblock %}
+
+{% block extra_scripts %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".fancybox").fancybox({
+            prevEffect : 'fade',
+            nextEffect : 'fade',
+            helpers : {title: {type: 'inside' }, }
+        });
+    });
+</script>
+{% endblock %}
+
+
+{% block menu %}
+    {% with dark=True page='genres' %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}
+
+
+{% block content %}
+    <section id="main" class="container">
+        <header>
+            <h2>Жанры</h2>
+            <p>Фотография как направление искусства очень многогранна</p>
+        </header>
+        <div class="box">
+
+            {% for row in object_list %}
+                <div class="row">
+                    <div class="9u">
+                        <h3>{{ row.title }}</h3>
+                        <p>{{ row.description }}</p>
+                    </div>
+                    <div class="3u"><span class="image fit">
+                        <a class="fancybox" rel="fancybox" href="{{ row.image.url }}" title="{{ row.title }}">
+                            <img src="{{ row.image.url }}" alt="{{ row.title }}" />
+                        </a>
+                    </span></div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </section>
+
+{% endblock content %}
