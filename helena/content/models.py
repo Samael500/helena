@@ -16,3 +16,7 @@ class Genres(models.Model):
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        verbose_name = 'жанр'
+        verbose_name_plural = 'жанры'
