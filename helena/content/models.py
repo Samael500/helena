@@ -10,11 +10,11 @@ class ImgWithDescr(models.Model):
     directory = None
 
     def get_image_path(instace, filename):
-        return image_path(instace, filename, directory=self.directory)
+        return image_path(instace, filename, directory=instace.directory)
 
-    title = models.CharField(verbose_name='Заголовок', max_length=200, required=True)
-    description = models.TextField(verbose_name='Описание')
-    image = models.ImageField(verbose_name='Изображение', upload_to=get_image_path, required=True)
+    title = models.CharField(verbose_name='Заголовок', max_length=200)
+    description = models.TextField(verbose_name='Описание', blank=True, null=True)
+    image = models.ImageField(verbose_name='Изображение', upload_to=get_image_path, blank=True, null=True)
 
     def __str__(self):
         return self.title
@@ -34,12 +34,12 @@ class Genres(ImgWithDescr):
         verbose_name_plural = 'жанры'
 
 
-class Gallery(ImgWithDescr):
+class Galleries(ImgWithDescr):
 
     """ class with gallery model """
 
     directory = 'gallery'
-    external_img = models.URLField(verbose_name='Изображение во внешнем источнике')
+    external_img = models.URLField(verbose_name='Изображение во внешнем источнике', blank=True, null=True)
 
     def img_url(self):
         """ return external img url or self file img """
