@@ -26,19 +26,18 @@
     <section id="main" class="container">
 
         <div class="box">
+            <div class="row no-collapse half uniform row-centered">
+
             {% for row in object_list %}
-                <div class="row">
-                    <div class="9u">
-                        <h3>{{ row.title }}</h3>
-                        <p>{{ row.description }}</p>
-                    </div>
-                    <div class="3u"><span class="image fit">
-                        <a class="fancybox" rel="fancybox" href="{{ row.image.url }}" title="{{ row.title }}">
-                            <img src="{{ row.image.url }}" alt="{{ row.title }}" />
+                <article class="card">
+                    <div class="cropper">
+                        <a class="fancybox" rel="fancybox" href="{{ row.img_url }}" alt="{{ row.title }}">
+                            <img src="{{ row.img_url }}" alt="{{ row.title }}" />
                         </a>
-                    </span></div>
-                </div>
+                    </div>
+                </article>
             {% endfor %}
+
         </div>
 
     </section>
