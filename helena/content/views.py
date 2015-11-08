@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView, ListView
-from content.models import Genres
+from content.models import Genres, Galleries
 
 
 class IndexView(TemplateView):
@@ -17,8 +17,10 @@ class GenresView(ListView):
     template_name = 'genres.html'
 
 
-class GalleryView(TemplateView):
+class GalleryView(ListView):
 
-    """ simple template for gallery page """
+    """ list with gallery page """
 
+    model = Galleries
+    paginate_by = 25
     template_name = 'gallery.html'
