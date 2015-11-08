@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # additional apps
     'compressor',
+    'sorl.thumbnail',
     # helena apps
     'content',
 )

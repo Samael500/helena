@@ -1,17 +1,10 @@
 {% extends 'base.html' %}
+{% load thumbnail %}
 
 {% block title %}Галерея / {{ block.super }}{% endblock %}
 
 {% block extra_scripts %}
-<script type="text/javascript">
-    $(document).ready(function() {
-        $(".fancybox").fancybox({
-            prevEffect : 'fade',
-            nextEffect : 'fade',
-            helpers : {title: {type: 'inside' }, }
-        });
-    });
-</script>
+<script type="text/javascript">$(document).ready(function(){$(".fancybox").fancybox({prevEffect:'fade',nextEffect:'fade',helpers:{title:{type:'inside'},}});});</script>
 {% endblock %}
 
 
@@ -31,8 +24,10 @@
             {% for row in object_list %}
                 <article class="card">
                     <div class="cropper">
-                        <a class="fancybox" rel="fancybox" href="{{ row.img_url }}" alt="{{ row.title }}">
-                            <img src="{{ row.img_url }}" alt="{{ row.title }}" />
+                        <a class="fancybox" rel="fancybox" href="{{ row.img_url }}">
+                            {% thumbnail row.img_url '180x180' crop="center" as im %}
+                                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ row.title }}">
+                            {% endthumbnail %}
                         </a>
                     </div>
                 </article>
