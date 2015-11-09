@@ -22,21 +22,21 @@
         <div class="box">
             <div class="row no-collapse half uniform row-centered">
 
-            {% for row in object_list %}
-                <article class="card">
-                    <div class="cropper">
-                        <a class="fancybox" rel="fancybox" href="{{ row.img_url }}">
-                            {% thumbnail row.img_src '180x180' crop='center' as im %}
-                                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ row.title }}">
-                            {% endthumbnail %}
-                        </a>
-                    </div>
-                </article>
-            {% endfor %}
+                {% for row in object_list %}
+                    <article class="card">
+                        <div class="cropper">
+                            <a class="fancybox" rel="fancybox" href="{{ row.img_url }}">
+                                {% thumbnail row.img_src '180x180' crop='center' as im %}
+                                    <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ row.title }}">
+                                {% endthumbnail %}
+                            </a>
+                        </div>
+                    </article>
+                {% endfor %}
+
+            </div>
 
             {% include 'paginator.html' %}
-
-        </div>
 
     </section>
 
