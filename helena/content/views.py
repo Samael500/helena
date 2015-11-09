@@ -22,5 +22,5 @@ class GalleryView(ListView):
     """ list with gallery page """
 
     model = Galleries
-    paginate_by = 1
+    paginate_by = 25
     template_name = 'gallery.html'
