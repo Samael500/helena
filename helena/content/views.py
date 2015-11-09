@@ -24,3 +24,10 @@ class GalleryView(ListView):
     model = Galleries
     paginate_by = 25
     template_name = 'gallery.html'
+
+
+class ContactsView(TemplateView):
+
+    """ simple template for contacts page """
+
+    template_name = 'contacts.html'
