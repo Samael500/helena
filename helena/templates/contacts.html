@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+
+{% block title %}Контакты / {{ block.super }}{% endblock %}
+
+{% block extra_scripts %}
+<script type="text/javascript">$(document).ready(function(){$(".fancybox").fancybox({
+    prevEffect:'fade',nextEffect:'fade',helpers:{title:{type:'inside'},}});});</script>
+{% endblock %}
+
+
+{% block menu %}
+    {% with dark=True page='contacts' %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}
+
+
+{% block content %}
+    <section id="main" class="container">
+        <header>
+            <h2>Контакты</h2>
+            <p>Письмо&nbsp;&mdash; причудливая форма молчания.</p>
+        </header>
+        <div class="box">
+        <div class="center">
+                <section class="box">
+                    <h3>Заполните контактную форму:</h3>
+                    <form method="post" action="#">
+                        <div class="row uniform half ollapse-at-2">
+                            <div class="6u">
+                                <input type="text" name="name" id="name" value="" placeholder="Name">
+                            </div>
+                            <div class="6u">
+                                <input type="email" name="email" id="email" value="" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="row uniform half">
+                            <div class="12u">
+                                <div class="select-wrapper">
+                                    <select name="category" id="category">
+                                        <option value="">- Category -</option>
+                                        <option value="1">Manufacturing</option>
+                                        <option value="1">Shipping</option>
+                                        <option value="1">Administration</option>
+                                        <option value="1">Human Resources</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row uniform half">
+                            <div class="12u">
+                                <textarea name="message" id="message" placeholder="Enter your message" rows="6"></textarea>
+                            </div>
+                        </div>
+                        <div class="row uniform">
+                            <div class="12u">
+                                <ul class="actions">
+                                    <li><input type="submit" value="Send Message"></li>
+                                    <li><input type="reset" value="Reset" class="alt"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
+            <h3>Или Вы&nbsp;можете найти меня в&nbsp;одной из&nbsp;этих социальных сетей:</h3>
+            <br />
+            <ul class="icons">
+                {% for link in SOCIAL_LINKS %}
+                    <li><a href="{{ link.0 }}" class="icon fa-3x {{ link.1 }}" title="{{ link.2 }}"><span class="label">{{ link.2 }}</span></a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        </div>
+    </section>
+
+{% endblock content %}
