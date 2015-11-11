@@ -68,7 +68,8 @@
             <br />
             <ul class="icons">
                 {% for link in SOCIAL_LINKS %}
-                    <li><a href="{{ link.0 }}" class="icon fa-3x {{ link.1 }}" title="{{ link.2 }}"><span class="label">{{ link.2 }}</span></a></li>
+                    <li><a href="{{ link.0 }}" class="icon icon-color fa-2x {{ link.1 }} icon-{{ link.2|lower }}" title="{{ link.2 }}">
+                        <span class="label">{{ link.2 }}</span></a></li>
                 {% endfor %}
             </ul>
         </div>

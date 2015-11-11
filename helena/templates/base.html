@@ -26,6 +26,7 @@
         {% compress css %}
             <link rel="stylesheet" href="{% static 'fancybox/jquery.fancybox.css' %}" />
             <link rel="stylesheet" href="{% static 'css/paginator.css' %}" />
+            <link rel="stylesheet" href="{% static 'css/social.css' %}" />
         {% endcompress %}
 
         <noscript>
@@ -62,7 +63,7 @@
             {% block footer %}
                 <ul class="icons">
                     {% for link in SOCIAL_LINKS %}
-                        <li><a href="{{ link.0 }}" class="icon {{ link.1 }}" title="{{ link.2 }}"><span class="label">{{ link.2 }}</span></a></li>
+                        <li><a href="{{ link.0 }}" class="icon icon-gray {{ link.1 }}" title="{{ link.2 }}"><span class="label">{{ link.2 }}</span></a></li>
                     {% endfor %}
                 </ul>
 
