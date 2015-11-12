@@ -2,6 +2,12 @@
     text-align: center;
 }
 
+.error {
+    color: red !important;
+    border-color: red !important;
+    border-width: 0.2em;
+}
+
 .pagination {
     padding: 20px;
     margin: 0;

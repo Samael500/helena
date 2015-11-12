@@ -23,52 +23,42 @@
             <p>Письмо&nbsp;&mdash; причудливая форма молчания.</p>
         </header>
         <div class="box">
-        <div class="center">
-                <section class="box">
-                    <h3>Заполните контактную форму:</h3>
-                    <form method="post" action="#">
+        <div class="align-center">
+                <h3>Что бы связаться со мой&nbsp;&mdash; заполните контактную форму:</h3>
+                    <form method="post" action="{% url 'content:contacts' %}">{% csrf_token %}
                         <div class="row uniform half ollapse-at-2">
                             <div class="6u">
-                                <input type="text" name="name" id="name" value="" placeholder="Name">
+                                {{ form.name }}
                             </div>
                             <div class="6u">
-                                <input type="email" name="email" id="email" value="" placeholder="Email">
+                                {{ form.email }}
                             </div>
                         </div>
                         <div class="row uniform half">
                             <div class="12u">
-                                <div class="select-wrapper">
-                                    <select name="category" id="category">
-                                        <option value="">- Category -</option>
-                                        <option value="1">Manufacturing</option>
-                                        <option value="1">Shipping</option>
-                                        <option value="1">Administration</option>
-                                        <option value="1">Human Resources</option>
-                                    </select>
-                                </div>
+                                {{ form.theme }}
                             </div>
                         </div>
                         <div class="row uniform half">
                             <div class="12u">
-                                <textarea name="message" id="message" placeholder="Enter your message" rows="6"></textarea>
+                                {{ form.message }}
                             </div>
                         </div>
-                        <div class="row uniform">
+                        <div class="row uniform align-right">
                             <div class="12u">
                                 <ul class="actions">
-                                    <li><input type="submit" value="Send Message"></li>
-                                    <li><input type="reset" value="Reset" class="alt"></li>
+                                    <li><input type="submit" value="Отправить сообщение"></li>
+                                    <li><input type="reset" value="Очистить форму" class="alt"></li>
                                 </ul>
                             </div>
                         </div>
                     </form>
-                </section>
 
             <h3>Или Вы&nbsp;можете найти меня в&nbsp;одной из&nbsp;этих социальных сетей:</h3>
             <br />
             <ul class="icons">
                 {% for link in SOCIAL_LINKS %}
-                    <li><a href="{{ link.0 }}" class="icon icon-color fa-2x {{ link.1 }} icon-{{ link.2|lower }}" title="{{ link.2 }}">
+                    <li><a href="{{ link.0 }}" class="icon icon-big icon-color fa-3x {{ link.1 }} icon-{{ link.2|lower }}" title="{{ link.2 }}">
                         <span class="label">{{ link.2 }}</span></a></li>
                 {% endfor %}
             </ul>
