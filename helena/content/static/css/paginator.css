@@ -5,7 +5,7 @@
 .error {
     color: red !important;
     border-color: red !important;
-    border-width: 0.2em;
+    border-width: 0.2em !important;
 }
 
 .pagination {
