@@ -28,13 +28,13 @@ class FeedBackForm(forms.Form, UpdateCssMixin):
     message = forms.CharField(widget=forms.Textarea(
         attrs={'rows': '6', 'placeholder': 'Сообщение'}), required=True, max_length=1000)
 
-
     def send_msg(self):
         """ Send email with current form data """
         # render email message
-        html_content = render_to_string('email/feedback.html', dict(instance=self, support_email=settings.DEFAULT_FROM_EMAIL, site_url=site_url))
+        html_content = render_to_string('email/feedback.html', dict(
+            instance=self, support_email=settings.DEFAULT_FROM_EMAIL))
         msg = EmailMultiAlternatives(
             subject='Новое сообщение из формы обратной связи',
-            body=strip_tags(html_content), from_email=settings.DEFAULT_FROM_EMAIL, to=to_email, )
+            body=strip_tags(html_content), from_email=settings.DEFAULT_FROM_EMAIL, to=settings.DEFAULT_TO_EMAIL, )
         msg.attach_alternative(html_content, 'text/html')
         msg.send(fail_silently=True)
