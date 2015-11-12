@@ -28,20 +28,20 @@
                     <form method="post" action="{% url 'content:contacts' %}">{% csrf_token %}
                         <div class="row uniform half ollapse-at-2">
                             <div class="6u">
-                                {{ form.name }}
+                                {% include 'helpers/field_with_error.html' with field=form.name %}
                             </div>
                             <div class="6u">
-                                {{ form.email }}
+                                {% include 'helpers/field_with_error.html' with field=form.email %}
                             </div>
                         </div>
                         <div class="row uniform half">
                             <div class="12u">
-                                {{ form.theme }}
+                                {% include 'helpers/field_with_error.html' with field=form.theme %}
                             </div>
                         </div>
                         <div class="row uniform half">
                             <div class="12u">
-                                {{ form.message }}
+                                {% include 'helpers/field_with_error.html' with field=form.message %}
                             </div>
                         </div>
                         <div class="row uniform align-right">
