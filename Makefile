@@ -14,6 +14,10 @@ lint:
 test:
 	../venv/bin/python manage.py test helena -v 2
 
+recompress:
+	../venv/bin/python manage.py collectstatic --noinput
+	../venv/bin/python manage.py compress --force
+
 ci_test:
 	python manage.py test helena -v 2
 	pep8 --exclude=*migrations*,*settings_local.py* --max-line-length=119 --show-source  helena/
