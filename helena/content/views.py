@@ -1,5 +1,6 @@
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, FormView
 from content.models import Genres, Galleries
+from content.forms import FeedBackForm
 
 
 class IndexView(TemplateView):
@@ -26,8 +27,9 @@ class GalleryView(ListView):
     template_name = 'gallery.html'
 
 
-class ContactsView(TemplateView):
+class ContactsView(FormView):
 
     """ simple template for contacts page """
 
+    form_class = FeedBackForm
     template_name = 'contacts.html'
