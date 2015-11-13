@@ -52,7 +52,8 @@ class ContentViewTestCase(TransactionTestCase):
 
     def test_contacts_page_post(self):
         """ Get 200 on contacts page """
-        response = self.client.post(self.url_contacts)
+        response = self.client.post(self.url_contacts, data=dict(
+            name='Пользователь', email='user@e.co', message='Здравствуйте, хочу заказать фотосессию'))
         self.assertEqual(response.status_code, 200)
         self.assertIn(
             '<li><a href="%s" class=\'active\'>Контакты</a></li>' % self.url_contacts,
