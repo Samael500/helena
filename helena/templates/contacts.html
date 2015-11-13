@@ -34,11 +34,13 @@
                                 {% include 'helpers/field_with_error.html' with field=form.email %}
                             </div>
                         </div>
+                        {% comment %}
                         <div class="row uniform half">
                             <div class="12u">
                                 {% include 'helpers/field_with_error.html' with field=form.theme %}
                             </div>
                         </div>
+                        {% endcomment %}
                         <div class="row uniform half">
                             <div class="12u">
                                 {% include 'helpers/field_with_error.html' with field=form.message %}

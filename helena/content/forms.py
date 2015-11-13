@@ -20,11 +20,11 @@ class FeedBackForm(forms.Form, UpdateCssMixin):
         self._set_errors_css()
 
     name = forms.CharField(widget=forms.TextInput(
-        attrs={'placeholder': 'Имя'}), required=True, max_length=200)
+        attrs={'placeholder': 'Имя'}), required=False, max_length=200)
     email = forms.EmailField(widget=forms.TextInput(
         attrs={'placeholder': 'Email'}), required=True, max_length=200)
-    theme = forms.CharField(widget=forms.TextInput(
-        attrs={'placeholder': 'Тема'}), required=True, max_length=200)
+    # theme = forms.CharField(widget=forms.TextInput(
+    #     attrs={'placeholder': 'Тема'}), required=False, max_length=200)
     message = forms.CharField(widget=forms.Textarea(
         attrs={'rows': '6', 'placeholder': 'Сообщение'}), required=True, max_length=1000)
 
