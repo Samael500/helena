@@ -18,6 +18,7 @@ DATABASES = {
 }
 
 DEFAULT_FROM_EMAIL = 'no-reply@helena.com'
+DEFAULT_TO_EMAIL = 'me@helena.com'
 EMAIL_HOST = 'debugmail.io'
 EMAIL_PORT = 25
 EMAIL_HOST_USER = 'samael500@gmail.com'

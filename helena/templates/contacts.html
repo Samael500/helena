@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+
+{% block title %}Контакты / {{ block.super }}{% endblock %}
+
+{% block extra_scripts %}
+<script type="text/javascript">$(document).ready(function(){$(".fancybox").fancybox({
+    prevEffect:'fade',nextEffect:'fade',helpers:{title:{type:'inside'},}});});</script>
+{% endblock %}
+
+
+{% block menu %}
+    {% with dark=True page='contacts' %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}
+
+
+{% block content %}
+    <section id="main" class="container">
+        <header>
+            <h2>Контакты</h2>
+            <p>Письмо&nbsp;&mdash; причудливая форма молчания.</p>
+        </header>
+        <div class="box">
+        <div class="align-center">
+                {% if not messages %}
+                <h3>Что бы связаться со мой&nbsp;&mdash; заполните контактную форму:</h3>
+                    <form method="post" action="{% url 'content:contacts' %}">{% csrf_token %}
+                        <div class="row uniform half ollapse-at-2">
+                            <div class="6u">
+                                {% include 'helpers/field_with_error.html' with field=form.name %}
+                            </div>
+                            <div class="6u">
+                                {% include 'helpers/field_with_error.html' with field=form.email %}
+                            </div>
+                        </div>
+                        {% comment %}
+                        <div class="row uniform half">
+                            <div class="12u">
+                                {% include 'helpers/field_with_error.html' with field=form.theme %}
+                            </div>
+                        </div>
+                        {% endcomment %}
+                        <div class="row uniform half">
+                            <div class="12u">
+                                {% include 'helpers/field_with_error.html' with field=form.message %}
+                            </div>
+                        </div>
+                        <div class="row uniform align-right">
+                            <div class="12u">
+                                <ul class="actions">
+                                    <li><input type="submit" value="Отправить сообщение"></li>
+                                    {# <li><input type="reset" value="Очистить форму" class="alt"></li> #}
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+                <hr />
+                <h3>Или Вы&nbsp;можете найти меня в&nbsp;одной из&nbsp;этих социальных сетей:</h3>
+                {% else %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    <hr />
+                {% endif %}
+
+            <br />
+            <ul class="icons">
+                {% for link in SOCIAL_LINKS %}
+                    <li><a href="{{ link.0 }}" class="icon icon-big icon-color fa-3x {{ link.1 }} icon-{{ link.2|lower }}" title="{{ link.2 }}">
+                        <span class="label">{{ link.2 }}</span></a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        </div>
+    </section>
+
+{% endblock content %}

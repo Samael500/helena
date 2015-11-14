@@ -1,17 +1,11 @@
 {% extends 'base.html' %}
+{% load thumbnail %}
 
 {% block title %}Галерея / {{ block.super }}{% endblock %}
 
 {% block extra_scripts %}
-<script type="text/javascript">
-    $(document).ready(function() {
-        $(".fancybox").fancybox({
-            prevEffect : 'fade',
-            nextEffect : 'fade',
-            helpers : {title: {type: 'inside' }, }
-        });
-    });
-</script>
+<script type="text/javascript">$(document).ready(function(){$(".fancybox").fancybox({
+    prevEffect:'fade',nextEffect:'fade',helpers:{title:{type:'inside'},}});});</script>
 {% endblock %}
 
 
@@ -26,20 +20,23 @@
     <section id="main" class="container">
 
         <div class="box">
-            {% for row in object_list %}
-                <div class="row">
-                    <div class="9u">
-                        <h3>{{ row.title }}</h3>
-                        <p>{{ row.description }}</p>
-                    </div>
-                    <div class="3u"><span class="image fit">
-                        <a class="fancybox" rel="fancybox" href="{{ row.image.url }}" title="{{ row.title }}">
-                            <img src="{{ row.image.url }}" alt="{{ row.title }}" />
-                        </a>
-                    </span></div>
-                </div>
-            {% endfor %}
-        </div>
+            <div class="row no-collapse half uniform row-centered">
+
+                {% for row in object_list %}
+                    <article class="card">
+                        <div class="cropper">
+                            <a class="fancybox" rel="fancybox" href="{{ row.img_url }}">
+                                {% thumbnail row.img_src '180x180' crop='center' as im %}
+                                    <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ row.title }}">
+                                {% endthumbnail %}
+                            </a>
+                        </div>
+                    </article>
+                {% endfor %}
+
+            </div>
+
+            {% include 'helpers/paginator.html' %}
 
     </section>
 

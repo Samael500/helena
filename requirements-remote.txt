@@ -8,3 +8,4 @@ psycopg2==2.5.4
 pylama==7.0.6
 django-rainbowtests==0.2.1
 -e git://github.com/django-compressor/django-compressor.git@dev#egg=django_compressor
+sorl-thumbnail==12.3

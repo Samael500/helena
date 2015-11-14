@@ -25,6 +25,8 @@
 
         {% compress css %}
             <link rel="stylesheet" href="{% static 'fancybox/jquery.fancybox.css' %}" />
+            <link rel="stylesheet" href="{% static 'css/paginator.css' %}" />
+            <link rel="stylesheet" href="{% static 'css/social.css' %}" />
         {% endcompress %}
 
         <noscript>
@@ -46,7 +48,7 @@
                 {% if dark %}<li><a href="{% url 'content:index' %}">Главная</a></li>{% endif %}
                 <li><a href="{% url 'content:genres' %}" {% if page == 'genres' %}class='active'{% endif %}>Жанры</a></li>
                 <li><a href="{% url 'content:gallery' %}" {% if page == 'gallery' %}class='active'{% endif %}>Галерея</a></li>
-                {# <!-- <li><a href="contacts.html">Контакты</a></li> --> #}
+                <li><a href="{% url 'content:contacts' %}" {% if page == 'contacts' %}class='active'{% endif %}>Контакты</a></li>
             </ul>
         </nav>
     </header>
@@ -61,7 +63,7 @@
             {% block footer %}
                 <ul class="icons">
                     {% for link in SOCIAL_LINKS %}
-                        <li><a href="{{ link.0 }}" class="icon {{ link.1 }}" title="{{ link.2 }}"><span class="label">{{ link.2 }}</span></a></li>
+                        <li><a href="{{ link.0 }}" class="icon icon-gray {{ link.1 }}" title="{{ link.2 }}"><span class="label">{{ link.2 }}</span></a></li>
                     {% endfor %}
                 </ul>
 

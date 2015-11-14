@@ -41,6 +41,12 @@ class Galleries(ImgWithDescr):
     directory = 'gallery'
     external_img = models.URLField(verbose_name='Изображение во внешнем источнике', blank=True, null=True)
 
+    @property
+    def img_src(self):
+        """ return external img url or self file img """
+        return self.external_img or self.image
+
+    @property
     def img_url(self):
         """ return external img url or self file img """
         return self.external_img or self.image.url

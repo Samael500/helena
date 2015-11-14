@@ -1,17 +1,11 @@
 {% extends 'base.html' %}
+{% load thumbnail %}
 
 {% block title %}Жанры / {{ block.super }}{% endblock %}
 
 {% block extra_scripts %}
-<script type="text/javascript">
-    $(document).ready(function() {
-        $(".fancybox").fancybox({
-            prevEffect : 'fade',
-            nextEffect : 'fade',
-            helpers : {title: {type: 'inside' }, }
-        });
-    });
-</script>
+<script type="text/javascript">$(document).ready(function(){$(".fancybox").fancybox({
+    prevEffect:'fade',nextEffect:'fade',helpers:{title:{type:'inside'},}});});</script>
 {% endblock %}
 
 
@@ -38,7 +32,9 @@
                     </div>
                     <div class="3u"><span class="image fit">
                         <a class="fancybox" rel="fancybox" href="{{ row.image.url }}" title="{{ row.title }}">
-                            <img src="{{ row.image.url }}" alt="{{ row.title }}" />
+                            {% thumbnail row.image '640' crop='center' as im %}
+                                <img src="{{ im.url }}" alt="{{ row.title }}">
+                            {% endthumbnail %}
                         </a>
                     </span></div>
                 </div>

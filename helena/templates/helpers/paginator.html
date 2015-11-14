@@ -1,0 +1,28 @@
+{% if page_obj.has_other_pages %}
+
+<div class="row">
+    <div class="pagination">
+
+        {% if page_obj.has_previous %}
+            <a href="?page=1" class="page gradient">первая</a>
+        {% else %}
+            <span class="page active">первая</span>
+        {% endif %}
+
+        {% for i in paginator.page_range %}
+            {% if i == page_obj.number %}
+                <span class="page active">{{ i }}</span>
+            {% else %}
+                <a href="?page={{ i }}" class="page gradient">{{ i }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ paginator.num_pages }}" class="page gradient">последняя</a>
+        {% else %}
+            <span class="page active">последняя</span>
+        {% endif %}
+    </div>
+</div>
+
+{% endif %}

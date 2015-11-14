@@ -15,3 +15,6 @@ DATABASES = {
         'NAME': join(BASE_DIR, 'helena.sqlite3'),
     }
 }
+
+DEFAULT_FROM_EMAIL = 'a@bc.def'
+DEFAULT_TO_EMAIL = 'b@bc.def'
