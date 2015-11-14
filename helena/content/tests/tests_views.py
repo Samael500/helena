@@ -54,7 +54,8 @@ class ContentViewTestCase(TransactionTestCase):
         """ Correct send msg """
         response = self.client.post(self.url_contacts, data=dict(
             name='Пользователь', email='user@e.co', message='Здравствуйте, хочу заказать фотосессию'))
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
+        response = self.client.get(response.url)
         self.assertIn(
             '<li><a href="%s" class=\'active\'>Контакты</a></li>' % self.url_contacts,
             response.content.decode('utf-8'))
