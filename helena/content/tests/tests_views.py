@@ -51,7 +51,7 @@ class ContentViewTestCase(TransactionTestCase):
             response.content.decode('utf-8'))
 
     def test_contacts_page_post(self):
-        """ Get 200 on contacts page """
+        """ Correct send msg """
         response = self.client.post(self.url_contacts, data=dict(
             name='Пользователь', email='user@e.co', message='Здравствуйте, хочу заказать фотосессию'))
         self.assertEqual(response.status_code, 200)

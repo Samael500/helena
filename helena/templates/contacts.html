@@ -24,6 +24,7 @@
         </header>
         <div class="box">
         <div class="align-center">
+                {% if not messages %}
                 <h3>Что бы связаться со мой&nbsp;&mdash; заполните контактную форму:</h3>
                     <form method="post" action="{% url 'content:contacts' %}">{% csrf_token %}
                         <div class="row uniform half ollapse-at-2">
@@ -55,8 +56,17 @@
                             </div>
                         </div>
                     </form>
+                <hr />
+                <h3>Или Вы&nbsp;можете найти меня в&nbsp;одной из&nbsp;этих социальных сетей:</h3>
+                {% else %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    <hr />
+                {% endif %}
 
-            <h3>Или Вы&nbsp;можете найти меня в&nbsp;одной из&nbsp;этих социальных сетей:</h3>
             <br />
             <ul class="icons">
                 {% for link in SOCIAL_LINKS %}
