@@ -1,0 +1,6 @@
+<p><strong>Имя:</strong> {{ instance.name.value|default:'Посетитель' }}</p>
+<p><strong>Адрес:</strong> {{ instance.email.value }}</p>
+<p><strong>Сообщение:</strong><br />
+    {{ instance.message.value }}</p>
+<hr />
+<p>Форма обратной связи [<a href="mailto:{{ support_email }}">{{ support_email }}</a>].</p>

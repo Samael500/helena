@@ -35,6 +35,6 @@ class FeedBackForm(forms.Form, UpdateCssMixin):
             instance=self, support_email=settings.DEFAULT_FROM_EMAIL))
         msg = EmailMultiAlternatives(
             subject='Новое сообщение из формы обратной связи',
-            body=strip_tags(html_content), from_email=settings.DEFAULT_FROM_EMAIL, to=settings.DEFAULT_TO_EMAIL, )
+            body=strip_tags(html_content), from_email=settings.DEFAULT_FROM_EMAIL, to=(settings.DEFAULT_TO_EMAIL, ), )
         msg.attach_alternative(html_content, 'text/html')
         msg.send(fail_silently=True)
